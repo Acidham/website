@@ -1,4 +1,9 @@
+.button * {
+    visibility: hidden;
+}
+
 .button>div {
+    visibility: unset;
     background-color: #4CAF50;
     /* Green */
     border: none;
