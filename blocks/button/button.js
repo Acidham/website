@@ -1,10 +1,12 @@
 function buttonTxt() {
   let text = [];
-  const button = document.querySelector('.button block');
+  const button = document.querySelector('.btn');
   text = button.querySelectorAll();
   const [, newText] = text;
-  document.querySelector('button').text = newText;
+  button.text = newText;
 }
 
-const button = document.querySelector('.button block')[0];
-button.addEventListener('click', buttonTxt);
+const buttonBlock = document.querySelector('.button block');
+buttonBlock[0].className = '.btn';
+buttonBlock[1].className = '.text';
+buttonBlock[0].addEventListener('click', buttonTxt);

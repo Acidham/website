@@ -1,4 +1,4 @@
-.button:nth-child(1) {
+.btn {
     background-color: #4CAF50;
     /* Green */
     border: none;
@@ -10,6 +10,6 @@
     font-size: 16px;
 }
 
-.button:nth-child(2) {
+.text {
     color: red
 }
