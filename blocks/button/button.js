@@ -2,7 +2,7 @@ function buttonTxt() {
   let text = [];
   const button = document.querySelector('.button block');
   text = button.querySelectorAll();
-  const [buttonText, newText] = text;
+  const [, newText] = text;
   document.querySelector('button').text = newText;
 }
 
