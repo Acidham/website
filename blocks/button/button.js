@@ -7,15 +7,15 @@ export default async function decorate(block) {
   const currentDiv = block.firstChild;
   block.insertBefore(newBtn, currentDiv);
 
+  const childrenLength = block.childElementCount - 1;
   /* Hide text */
-  for (let i = 1; i <= 2; i += 1) {
+  for (let i = 1; i <= childrenLength; i += 1) {
     const theTxt = block.children[i].children[0];
     theTxt.classList.add('txt');
   }
 
   /* Listener */
   let i = 1;
-  const childrenLength = block.childElementCount - 1;
   const btnFunc = () => {
     if (i > childrenLength) {
       newBtn.innerText = 'Show';
