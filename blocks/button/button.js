@@ -1,12 +1,21 @@
-function buttonTxt() {
-  let text = [];
-  const button = document.querySelector('.btn');
-  text = button.querySelectorAll();
-  const [, newText] = text;
-  button.text = newText;
-}
+export default async function decorate(block) {
+  /* Create button */
+  const newBtn = document.createElement('button');
+  newBtn.className = 'btn';
+  const btnText = document.createTextNode('Show');
+  newBtn.append(btnText);
+  const currentDiv = block.firstChild;
+  block.insertBefore(newBtn, currentDiv);
 
-const buttonBlock = document.querySelector('.button block');
-buttonBlock[0][0].className = '.btn';
-buttonBlock[1][0].className = '.text';
-buttonBlock[0][0].addEventListener('click', buttonTxt);
+  /* Hide text */
+  for (let i = 1; i <= 2; i += 1) {
+    const theTxt = block.children[i].children[0];
+    theTxt.classList.add('txt');
+  }
+
+  /* Listener */
+  const button = block.getElementsByTagName('button');
+  button.addEventListener('click', () => {
+    button.innerText = block.children[1].children[0].innerText;
+  });
+}
