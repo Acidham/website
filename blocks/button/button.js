@@ -14,8 +14,6 @@ export default async function decorate(block) {
   }
 
   /* Listener */
-  const button = block.getElementsByTagName('button');
-  button.addEventListener('click', () => {
-    button.innerText = block.children[1].children[0].innerText;
-  });
+  const btnFunc = () => { newBtn.innerText = block.children[1].children[0].innerText; };
+  newBtn.addEventListener('click', btnFunc);
 }
