@@ -15,8 +15,9 @@ export default async function decorate(block) {
 
   /* Listener */
   let i = 1;
+  const childrenLength = block.childElementCount - 1;
   const btnFunc = () => {
-    if (i > 2) {
+    if (i > childrenLength) {
       newBtn.innerText = 'Show';
       i = 1;
     } else {
