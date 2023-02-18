@@ -14,6 +14,15 @@ export default async function decorate(block) {
   }
 
   /* Listener */
-  const btnFunc = () => { newBtn.innerText = block.children[1].children[0].innerText; };
+  let i = 1;
+  const btnFunc = () => {
+    if (i > 2) {
+      newBtn.innerText = 'Show';
+      i = 1;
+    } else {
+      newBtn.innerText = block.children[i].children[0].innerText;
+      i += 1;
+    }
+  };
   newBtn.addEventListener('click', btnFunc);
 }
