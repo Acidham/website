@@ -1,4 +1,4 @@
-.btn {
+.button.block {
     background-color: #3621c1;
     /* Green */
     border: none;
@@ -11,9 +11,6 @@
     width: 80%;
 }
 
-.txt {
-    /*color: green;*/
-    position: absolute;
-    z-index: 100;
-    display: none;
+.button.block ul {
+    color: transparent;
 }

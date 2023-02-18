@@ -1,29 +1,25 @@
 export default async function decorate(block) {
-  /* Create button */
-  const newBtn = document.createElement('button');
-  newBtn.className = 'btn';
-  const btnText = document.createTextNode('Show');
-  newBtn.append(btnText);
-  const currentDiv = block.firstChild;
-  block.insertBefore(newBtn, currentDiv);
+  /* Read variable text */
+  const ul = block.querySelector('ul');
+  const allList = ul.querySelectorAll('li');
+  const txtList = [];
+  allList.forEach((li) => {
+    txtList.push(li.innerText);
+  });
 
-  const childrenLength = block.childElementCount - 1;
-  /* Hide text */
-  for (let i = 1; i <= childrenLength; i += 1) {
-    const theTxt = block.children[i].children[0];
-    theTxt.classList.add('txt');
-  }
+  /* Add Button Text */
+  block.innerText = 'Show';
 
   /* Listener */
-  let i = 1;
+  let clickCounter = 0;
   const btnFunc = () => {
-    if (i > childrenLength) {
-      newBtn.innerText = 'Show';
-      i = 1;
+    if (clickCounter < txtList.length) {
+      block.innerText = txtList[clickCounter];
+      clickCounter += 1;
     } else {
-      newBtn.innerText = block.children[i].children[0].innerText;
-      i += 1;
+      block.innerText = 'SHOW';
+      clickCounter = 0;
     }
   };
-  newBtn.addEventListener('click', btnFunc);
+  block.addEventListener('click', btnFunc);
 }
