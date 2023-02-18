@@ -8,9 +8,12 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    width: 150px
+    width: 150px;
 }
 
 .txt {
-    color: transparent;
+    /*color: green;*/
+    position: absolute;
+    z-index: 100;
+    display: none;
 }
