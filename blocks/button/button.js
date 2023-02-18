@@ -1,9 +1,9 @@
 export default async function decorate(block) {
   /* Read variable text */
   const ul = block.querySelector('ul');
-  const allList = ul.querySelectorAll('li');
+  const allLi = ul.querySelectorAll('li');
   const txtList = [];
-  allList.forEach((li) => {
+  allLi.forEach((li) => {
     txtList.push(li.innerText);
   });
 
