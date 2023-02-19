@@ -1,22 +1,29 @@
-async function getJson(pathname) {
-  const jsn = await fetch(pathname);
-  const json = await jsn.json();
-  return json;
-}
-
 export default async function decorate(block) {
   /* Decorate Button */
   const btn = block.children[0].children[0];
   btn.classList.add('btn');
   const newDiv = document.createElement('div');
-  block.lastChild.appendChild(newDiv);
+  block.appendChild(newDiv);
 
+  /* data can be written into div */
+  const jsn = await fetch('/json-data.json');
+  const json = await jsn.json();
+  const txt = [];
+  json.data.forEach((el) => {
+    txt.push(el.data);
+  });
+  block.lastChild.innerHTML = txt.join('<br>');
 
-  /* handle json data */
-  const data = getJson('/json-data.json');
-  const btnFunc = () => {
-    let a = 1;
+  /* write json data on click*/
+  /* Eventlistner does not work
+  const showData = async () => {
+    const jsn = await fetch('/json-data.json');
+    const json = await jsn.json();
+    let txt = [];
+    json.data.forEach((el) => {
+      txt.push(el.data);
+    });
+    block.lastChild.innerHTML = txt.join('<br>');
   };
-
-  block.addEventListner('click', btnFunc);
+  block.addEventListner('click', showData); */
 }
