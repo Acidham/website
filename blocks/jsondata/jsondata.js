@@ -6,24 +6,25 @@ export default async function decorate(block) {
   block.appendChild(newDiv);
 
   /* data can be written into div */
-  const jsn = await fetch('/json-data.json');
+  /* const jsn = await fetch('/json-data.json');
   const json = await jsn.json();
   const txt = [];
   json.data.forEach((el) => {
     txt.push(el.data);
   });
-  block.lastChild.innerHTML = txt.join('<br>');
+  block.lastChild.innerHTML = txt.join('<br>'); */
 
-  /* write json data on click*/
-  /* Eventlistner does not work
+  /* write json data on click */
+  /* Eventlistner does not work */
   const showData = async () => {
     const jsn = await fetch('/json-data.json');
     const json = await jsn.json();
-    let txt = [];
+    const txt = [];
     json.data.forEach((el) => {
       txt.push(el.data);
     });
     block.lastChild.innerHTML = txt.join('<br>');
   };
-  block.addEventListner('click', showData); */
+  block.children[0].children[0].addEventListner('click', showData);
+  /* block.querySelector('.btn').addEventListner('click', showData); */
 }
