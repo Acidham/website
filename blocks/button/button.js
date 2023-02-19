@@ -8,9 +8,7 @@ export default async function decorate(block) {
   });
 
   /* Add Button Text */
-  /* block.innerText = 'Show'; */
-
-  /* ul.parentElement.removeChild('ul'); */
+  block.innerText = 'Show';
 
   /* Listener */
   let clickCounter = 0;
