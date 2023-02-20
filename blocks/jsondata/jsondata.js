@@ -1,11 +1,11 @@
 async function getJson(pathname) {
   const jsn = await fetch(pathname);
   const json = await jsn.json();
-  const txt = [];
+  /* const jsnData = [];
   json.data.forEach((el) => {
-    txt.push(el.data);
-  });
-  return txt;
+    jsnData.push(el.data);
+  }); */
+  return json.data;
 }
 
 export default async function decorate(block) {
@@ -16,22 +16,16 @@ export default async function decorate(block) {
   block.appendChild(newDiv);
 
   /* write json data on click */
-  let notExecuted = true;
-  const jsonData = [];
+  let jsonData = [];
+  let html = '';
   const showData = async () => {
-    /*
-    const jsn = await fetch('/json-data.json');
-    const json = await jsn.json();
-    const txt = [];
-    json.data.forEach((el) => {
-      txt.push(el.data);
-    }); */
-    if (notExecuted) {
-      jsonData.push(await getJson('/json-data.json'));
-      notExecuted = false;
+    if (jsonData.length === 0) {
+      jsonData = [...await getJson('/json-data.json')];
     }
-    block.lastChild.innerHTML = [...(await jsonData)].join('<br>');
+    jsonData.forEach((el) => {
+      html += `${el.data}<br>`;
+    });
+    block.lastChild.innerHTML = html;
   };
-  /* block.children[0].children[0].addEventListener('click', showData); */
   block.querySelector('.btn').addEventListener('click', showData);
 }
