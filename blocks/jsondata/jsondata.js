@@ -1,10 +1,6 @@
 async function getJson(pathname) {
   const jsn = await fetch(pathname);
   const json = await jsn.json();
-  /* const jsnData = [];
-  json.data.forEach((el) => {
-    jsnData.push(el.data);
-  }); */
   return json.data;
 }
 
