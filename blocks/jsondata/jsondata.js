@@ -10,7 +10,10 @@ export default async function decorate(block) {
   btn.classList.add('btn');
   const newDiv = document.createElement('div');
   block.appendChild(newDiv);
-  /* bla fasel */
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 1c4a3cc (some comments changed)
   /* write json data on click */
   let jsonData = [];
   let html = '';
