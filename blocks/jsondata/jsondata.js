@@ -27,10 +27,10 @@ export default async function decorate(block) {
       txt.push(el.data);
     }); */
     if (notExecuted) {
-      jsonData.push(getJson('/json-data.json'));
+      jsonData.push(await getJson('/json-data.json'));
       notExecuted = false;
     }
-    block.lastChild.innerHTML = (await jsonData).join('<br>');
+    block.lastChild.innerHTML = [...(await jsonData)].join('<br>');
   };
   /* block.children[0].children[0].addEventListener('click', showData); */
   block.querySelector('.btn').addEventListener('click', showData);
