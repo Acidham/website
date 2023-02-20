@@ -1,3 +1,13 @@
+async function getJson(pathname) {
+  const jsn = await fetch(pathname);
+  const json = await jsn.json();
+  const txt = [];
+  json.data.forEach((el) => {
+    txt.push(el.data);
+  });
+  return txt;
+}
+
 export default async function decorate(block) {
   /* Decorate Button */
   const btn = block.children[0].children[0];
@@ -5,26 +15,23 @@ export default async function decorate(block) {
   const newDiv = document.createElement('div');
   block.appendChild(newDiv);
 
-  /* data can be written into div */
-  /* const jsn = await fetch('/json-data.json');
-  const json = await jsn.json();
-  const txt = [];
-  json.data.forEach((el) => {
-    txt.push(el.data);
-  });
-  block.lastChild.innerHTML = txt.join('<br>'); */
-
   /* write json data on click */
-  /* Eventlistner does not work */
+  let notExecuted = true;
+  const jsonData = [];
   const showData = async () => {
+    /*
     const jsn = await fetch('/json-data.json');
     const json = await jsn.json();
     const txt = [];
     json.data.forEach((el) => {
       txt.push(el.data);
-    });
-    block.lastChild.innerHTML = txt.join('<br>');
+    }); */
+    if (notExecuted) {
+      jsonData.push(getJson('/json-data.json'));
+      notExecuted = false;
+    }
+    block.lastChild.innerHTML = (await jsonData).join('<br>');
   };
-  block.children[0].children[0].addEventListner('click', showData);
-  /* block.querySelector('.btn').addEventListner('click', showData); */
+  /* block.children[0].children[0].addEventListener('click', showData); */
+  block.querySelector('.btn').addEventListener('click', showData);
 }
