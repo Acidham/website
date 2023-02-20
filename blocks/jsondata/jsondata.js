@@ -5,7 +5,7 @@ async function getJson(pathname) {
 }
 
 export default async function decorate(block) {
-  /* Decorate Button */
+  /* Decorate dutton */
   const btn = block.children[0].children[0];
   btn.classList.add('btn');
   const newDiv = document.createElement('div');
