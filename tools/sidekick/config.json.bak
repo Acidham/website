@@ -1,6 +1,6 @@
 {
-  "project": "Website",
-  "host": "main--website--acidham.hlx.page",
+  "project": "HelpX Internal",
+  "host": "helpx-internal.corp.adobe.com",
   "plugins": [
     {
       "id": "library",
