@@ -8,6 +8,27 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    width: 80%;
+    width: fit-content;
     cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Text Box Container */
+.flexcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Text Box */
+.box {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    padding: 5px;
+    margin-top: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
 }

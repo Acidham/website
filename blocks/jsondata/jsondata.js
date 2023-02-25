@@ -21,7 +21,14 @@ export default async function decorate(block) {
     jsonData.forEach((el) => {
       html += `${el.data}<br>`;
     });
-    block.lastChild.innerHTML = html;
+
+    /* decorate box */
+    block.classList.add('flexcontainer');
+    const boxDiv = document.createElement('div');
+    const newBox = block.appendChild(boxDiv);
+    newBox.classList.add('box');
+    newBox.innerHTML = html;
+    html = '';
   };
   block.querySelector('.btn').addEventListener('click', showData);
 }
