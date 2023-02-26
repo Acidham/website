@@ -11,24 +11,46 @@ export default async function decorate(block) {
   const newDiv = document.createElement('div');
   block.appendChild(newDiv);
 
+  /* create and decorate search input field */
+  const inputField = document.createElement('input');
+  const input = btn.parentElement.appendChild(inputField);
+  input.classList.add('searchfield');
+
   /* write json data on click */
   let jsonData = [];
-  let html = '';
+  let html = '<table>';
   const showData = async () => {
+    const searchTerm = input.value;
     if (jsonData.length === 0) {
       jsonData = [...await getJson('/json-data.json')];
     }
     jsonData.forEach((el) => {
-      html += `${el.data}<br>`;
+      if (el.Name.includes(searchTerm)) {
+        html += `
+        <tr>
+          <td>Name:</td>
+          <td>${el.Name}</td>
+        </tr>
+        <tr>
+          <td>Size:</td>
+          <td>${el.Size}</td>
+        <tr>
+          <td>Price:</td>
+          <td>${el.Price}</td>
+        </tr>`;
+      }
     });
+    html += '</table>';
 
     /* decorate box */
-    block.classList.add('flexcontainer');
+    block.lastChild.classList.add('flexcontainer');
+    const flexContainer = block.querySelector('.flexcontainer');
+    /* block.classList.add('flexcontainer'); */
     const boxDiv = document.createElement('div');
-    const newBox = block.appendChild(boxDiv);
+    const newBox = flexContainer.appendChild(boxDiv);
     newBox.classList.add('box');
     newBox.innerHTML = html;
-    html = '';
+    html = '<table>';
   };
   block.querySelector('.btn').addEventListener('click', showData);
 }

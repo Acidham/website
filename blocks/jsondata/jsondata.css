@@ -1,15 +1,12 @@
 /* Text Box Container */
 .flexcontainer {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
 .btn {
-    display: flex;
-    justify-content: flex-start;
+    display: block;
     background-color: #3621c1;
     border: none;
     color: white;
@@ -23,14 +20,19 @@
     border-radius: 4px;
 }
 
+input.searchfield {
+    width: 20 px;
+}
+
+input.searchfield:focus {
+    outline: 5px dashed red;
+}
+
 /* Text Box */
 .box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     width: fit-content;
     padding: 5px;
-    margin-top: 10px;
+    margin: 5px 10px 5px;
     border: 2px solid black;
     border-radius: 5px;
 }
