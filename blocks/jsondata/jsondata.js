@@ -15,6 +15,8 @@ export default async function decorate(block) {
   const inputField = document.createElement('input');
   const input = btn.parentElement.appendChild(inputField);
   input.classList.add('searchfield');
+  block.querySelector('searchfield').value('Shimano');
+  block.querySelector('searchfield').innerHTML = 'Shimano';
 
   /* write json data on click */
   let jsonData = [];
